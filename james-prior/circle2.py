@@ -1,4 +1,6 @@
-from Tkinter import Tk, Canvas, PhotoImage, mainloop
+#!/usr/bin/env python3
+
+from tkinter import Tk, Canvas, PhotoImage, mainloop
 from math import sin
 from time import sleep
 from sys import argv

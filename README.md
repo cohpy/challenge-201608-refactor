@@ -4,6 +4,9 @@ In A.K. Dewdney's book, "The Armchair Universe", there is a chapter called
 "Wallpaper for the Mind". In it, he describes a number of algorithms to make
 pretty pictures.
 
+A pdf of of the original Computer Recreations column on which this chapter is
+based can be found [here](https://www.dropbox.com/s/4wub318265sw8no/Computer_Recreations_Column_1986_Wallpaper.pdf?dl=0).
+
 I have implemented one of those algorithms, John E. Connett's "CIRCLE^2" in
 the Python program circle2.py.
 

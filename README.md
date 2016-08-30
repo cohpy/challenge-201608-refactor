@@ -51,7 +51,7 @@ Log in to your Github account.
 Browse to https://github.com/cohpy/challenge-201608-refactor
 and "fork" it to your own account.
 
-On your computers, clone your forked repo.
+On your local computer, clone your forked repo.
 
     git clone https://github.com/aneuman/challenge-201608-refactor.git
 

@@ -34,3 +34,49 @@ As another bonus, can you add color?
 
 As another bonus, add play with different algorithms,
 and be able to choose them from the command line.
+
+## How to submit an entry.
+
+If you are not familiar with using
+ [git](https://en.wikipedia.org/wiki/Git_(software%29) and
+ [Github](github.com), go to the
+[weekly dojos](http://www.meetup.com/Central-Ohio-Python-Users-Group/).
+
+For the examples below, the Github account name is
+"[aneuman](https://en.wikipedia.org/wiki/Alfred_E._Neuman)".
+Of course, when you do these, use your actual Github account name.
+
+Log in to your Github account.
+
+Browse to https://github.com/cohpy/challenge-201608-refactor
+and "fork" it to your own account.
+
+On your computers, clone your forked repo.
+
+    git clone https://github.com/aneuman/challenge-201608-refactor.git
+
+Go into your local copy of that repo.
+
+    cd challenge-201608-refactor
+
+Make a new directory to put your version of stuff in
+and copy the files into it.
+
+    mkdir aneuman
+    cp -p circle2.py aneuman
+    cd aneuman
+
+Edit the files to your heart's content,
+then add and commit them to your local copy of the repo.
+
+    vi circle2.py
+    git add circle2.py
+    git commit -m 'aneuman/circle2.py: Achieved perfection.'
+
+Push your local changes to your "fork" of the repo on your Github account.
+
+    git push origin master
+
+Log in to your Github account and browse to your "fork"
+of the repo. Click on "New pull request" button and
+follow the directions.

@@ -79,7 +79,7 @@ Push your local changes to your "fork" of the repo on your Github account.
 
 Log in to your Github account.
 
-and browse to your "fork" of the repo at
+Browse to your "fork" of the repo at
 https://github.com/aneuman/challenge-201608-refactor.
 
 Click on "New pull request" button and follow the directions.

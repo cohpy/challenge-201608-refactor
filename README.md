@@ -38,7 +38,7 @@ and be able to choose them from the command line.
 ## How to submit an entry.
 
 If you are not familiar with using
- [git](https://en.wikipedia.org/wiki/Git_(software%29) and
+ [git](https://en.wikipedia.org/wiki/Git_%28software%29) and
  [Github](github.com), go to the
 [weekly dojos](http://www.meetup.com/Central-Ohio-Python-Users-Group/).
 

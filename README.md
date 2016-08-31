@@ -2,7 +2,8 @@
 
 In [A.K. Dewdney](https://en.wikipedia.org/wiki/Alexander_Dewdney)'s book,
 ["The Armchair Universe"](http://www.worldcat.org/title/armchair-universe-an-exploration-of-computer-worlds/oclc/16649548),
-there is a chapter called "Wallpaper for the Mind".
+there is a chapter called
+"[Wallpaper for the Mind](https://www.dropbox.com/s/4wub318265sw8no/Computer_Recreations_Column_1986_Wallpaper.pdf)".
 In it, he describes a number of algorithms to make pretty pictures.
 
 A pdf of of the original Computer Recreations column on which this chapter is

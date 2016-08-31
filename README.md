@@ -41,10 +41,12 @@ and be able to choose them from the command line.
 
 ## How to submit an entry.
 
-If you are not familiar with using
- [git](https://en.wikipedia.org/wiki/Git_%28software%29) and
- [Github](github.com), go to the
+If you need help using
+[git](https://en.wikipedia.org/wiki/Git_%28software%29) and
+[Github](github.com), come to the
 [weekly dojos](http://www.meetup.com/Central-Ohio-Python-Users-Group/).
+Try to figure out what you can beforehand.
+There are plenty of on-line tutorials.
 
 For the examples below, the Github account name is
 "[aneuman](https://en.wikipedia.org/wiki/Alfred_E._Neuman)".

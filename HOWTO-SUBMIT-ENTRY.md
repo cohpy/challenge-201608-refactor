@@ -1,4 +1,4 @@
-# How to submit an entry.
+# How to submit an entry
 
 For the examples below, the Github account name is "jdoe".
 Of course, when you do these, use your actual Github account name.

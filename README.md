@@ -39,4 +39,4 @@ As another bonus, can you add color?
 As another bonus, play with different algorithms,
 and be able to choose them from the command line.
 
-See HOWTO-SUBMIT-ENTRY.md for howto submit an entry.
+See HOWTO-SUBMIT-ENTRY.md for how to submit an entry.

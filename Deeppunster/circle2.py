@@ -1,3 +1,14 @@
+"""
+circle2.py - from John E. Connett's "CIRCLE^2".
+
+Deeptinker refactorings:
+
+1.  Added code to time how long each run takes.
+    RESEULT: N/A
+
+2.  Reduce the number of times that i/100.0 is calculatated.
+    Result negligible.
+"""
 from tkinter import Tk, Canvas, PhotoImage, mainloop
 from sys import argv
 
@@ -16,8 +27,9 @@ img = PhotoImage(width=WIDTH, height=HEIGHT)
 canvas.create_image((WIDTH/2, HEIGHT/2), image=img, state="normal")
 with JPTimer() as t:
     for i in range(WIDTH):
+        i_factor = i/100.0
         for j in range(HEIGHT):
-            x = CORNA + (SIDE * (i/100.0))
+            x = CORNA + (SIDE * i_factor)
             y = CORNB + (SIDE * (j/100.0))
             z = x*x + y*y
             c = int(z)

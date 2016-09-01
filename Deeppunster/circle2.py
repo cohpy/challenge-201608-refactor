@@ -27,11 +27,11 @@ img = PhotoImage(width=WIDTH, height=HEIGHT)
 canvas.create_image((WIDTH/2, HEIGHT/2), image=img, state="normal")
 with JPTimer() as t:
     for i in range(WIDTH):
-        i_factor = i/100.0
+        x = CORNA + (SIDE * i/100.0)
+        x_squared = x * x
         for j in range(HEIGHT):
-            x = CORNA + (SIDE * i_factor)
             y = CORNB + (SIDE * (j/100.0))
-            z = x*x + y*y
+            z = x_squared + y*y
             c = int(z)
             if c % 2 == 0:
                 img.put("#ffffff", (i,j))

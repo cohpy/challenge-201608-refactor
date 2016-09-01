@@ -17,6 +17,7 @@ Go into the directory of your local copy of that repo.
     cd challenge-201608-refactor
 
 Make a new directory to put your stuff in and copy files into it.
+Use your name or Github account name for the directory name.
 
     mkdir jdoe
     cp -p circle2.py jdoe

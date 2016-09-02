@@ -5,16 +5,22 @@
 # using Debian 8.5
 # Python 3.4.2
 
+# imports
 from tkinter import Tk, Canvas, PhotoImage, mainloop
 from math import sin
 from time import sleep
-from sys import argv
 
+# sys.argv produces 'index out of range' error
+# going a different direction
+#from sys import argv
+
+# default window dimensions
 WIDTH, HEIGHT = 640, 480
 
-CORNA = int(argv[1])
-CORNB = int(argv[2])
-SIDE = float(argv[3])
+# image parameters
+CORNA = int(1)
+CORNB = int(2)
+SIDE = float(4)
 
 window = Tk()
 canvas = Canvas(window, width=WIDTH, height=HEIGHT, bg="#000000")

@@ -1,0 +1,18 @@
+command line arguments
+    height, width
+        default to full screen?
+    corna, cornb
+        is this be an x,y tuple for a corner?
+    size
+
+    multiple patterns
+        cycle or once
+        specify time delay
+        specified parameters or random
+
+allow interactive user input while showing 
+
+fill window as it is resized
+    just make window full size
+
+color

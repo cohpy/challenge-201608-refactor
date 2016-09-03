@@ -5,14 +5,23 @@ from tkinter import Tk, Canvas, PhotoImage, mainloop
 
 WIDTH, HEIGHT = 640, 480
 
+BLACK = '#000000'
+RED = '#ff0000'
+GREEN = '#00ff00'
+BLUE = '#0000ff'
+WHITE = '#ffffff'
+
+BACKGROUND_COLOR = BLACK
+FOREGROUND_COLOR = WHITE
+
 
 def color(xx, yy):
     z = xx + yy
     c = int(z)
     if c % 2 == 0:
-        return '#ffffff'
+        return FOREGROUND_COLOR
     else:
-        return '#000000'
+        return BACKGROUND_COLOR
 
 
 def main(argv):
@@ -21,7 +30,7 @@ def main(argv):
     side = float(argv[3])
 
     window = Tk()
-    canvas = Canvas(window, width=WIDTH, height=HEIGHT, bg="#000000")
+    canvas = Canvas(window, width=WIDTH, height=HEIGHT, bg=BACKGROUND_COLOR)
     canvas.pack()
     img = PhotoImage(width=WIDTH, height=HEIGHT)
     canvas.create_image((WIDTH/2, HEIGHT/2), image=img, state="normal")

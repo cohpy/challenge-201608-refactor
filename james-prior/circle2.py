@@ -11,6 +11,8 @@ GREEN = '#00ff00'
 BLUE = '#0000ff'
 WHITE = '#ffffff'
 
+COLORS = (BLACK, RED, GREEN, BLUE, WHITE)
+
 BACKGROUND_COLOR = BLACK
 FOREGROUND_COLOR = WHITE
 
@@ -18,10 +20,13 @@ FOREGROUND_COLOR = WHITE
 def color(xx, yy):
     z = xx + yy
     c = int(z)
-    if c % 2 == 0:
-        return FOREGROUND_COLOR
+    if True:
+        return COLORS[c % len(COLORS)]
     else:
-        return BACKGROUND_COLOR
+        if c % 2 == 0:
+            return FOREGROUND_COLOR
+        else:
+            return BACKGROUND_COLOR
 
 
 def main(argv):

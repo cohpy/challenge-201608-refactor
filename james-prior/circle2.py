@@ -3,8 +3,6 @@
 from sys import argv
 from tkinter import Tk, Canvas, PhotoImage, mainloop
 
-WIDTH, HEIGHT = 640, 480
-
 BLACK = '#000000'
 RED = '#ff0000'
 GREEN = '#00ff00'
@@ -35,18 +33,21 @@ def main(argv):
     side = float(argv[3])
 
     window = Tk()
-    canvas = Canvas(window, width=WIDTH, height=HEIGHT, bg=BACKGROUND_COLOR)
+    screen_size = window.winfo_screenwidth(), window.winfo_screenheight()
+    width, height = screen_size
+    # print(screen_size)
+    canvas = Canvas(window, width=width, height=height, bg=BACKGROUND_COLOR)
     canvas.pack()
-    img = PhotoImage(width=WIDTH, height=HEIGHT)
-    canvas.create_image((WIDTH/2, HEIGHT/2), image=img, state="normal")
+    img = PhotoImage(width=width, height=height)
+    canvas.create_image((width/2, height/2), image=img, state="normal")
 
     x_squareds = [x*x for x in [
         corna + (side * (i/100.0))
-        for i in range(WIDTH)]]
+        for i in range(width)]]
 
     y_squareds = [y*y for y in [
         cornb + (side * (j/100.0))
-        for j in range(HEIGHT)]]
+        for j in range(height)]]
 
     lines = []
     for yy in y_squareds:

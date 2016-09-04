@@ -1,40 +1,53 @@
+# Bennett Wenger
+# Python 3.4
+
 # refactoring of circle2.py
 # cohpy challenge for August 2016
-#
-# Bennett Wenger
-# using Debian 8.5
-# Python 3.4.2
+
+# added comments
+# general bugfixes
+# simplified variable names
+# lower > UPPER
+# '' > ""
+# * imports
+# 4:3 aspect ratio
+# randomized parameters
+# easy color names
+# window name
 
 # imports
-from tkinter import Tk, Canvas, PhotoImage, mainloop
-from math import sin
-from time import sleep
+from tkinter import *
+from math import *
+from random import *
 
-# sys.argv produces 'index out of range' error
-# going a different direction
-#from sys import argv
-
-# default window dimensions
-WIDTH, HEIGHT = 640, 480
+# default dimensions
+w = 400
+h = 300
 
 # image parameters
-CORNA = int(1)
-CORNB = int(2)
-SIDE = float(4)
+a = randrange(1, 8, 1)
+b = randrange(1, 8, 1)
+s = randrange(1, 8, 1)
 
+# create
 window = Tk()
-canvas = Canvas(window, width=WIDTH, height=HEIGHT, bg="#000000")
+window.wm_title('fun image')
+canvas = Canvas(window, width=w, height=h, bg='black')
 canvas.pack()
-img = PhotoImage(width=WIDTH, height=HEIGHT)
-canvas.create_image((WIDTH/2, HEIGHT/2), image=img, state="normal")
+img = PhotoImage(width=w, height=h)
+canvas.create_image((w/2, h/2), image=img, state='normal')
 
-for i in range(WIDTH):
-    for j in range(HEIGHT):
-        x = CORNA + (SIDE * (i/100.0))
-        y = CORNB + (SIDE * (j/100.0))
+# draw
+for i in range(w):
+    for j in range(h):
+        x = a + (s * (i/100.0))
+        y = b + (s * (j/100.0))
         z = x*x + y*y
         c = int(z)
         if c % 2 == 0:
-            img.put("#ffffff", (i,j))
-
+            img.put('white', (i,j))
+            
+# main
 mainloop()
+
+# end of file

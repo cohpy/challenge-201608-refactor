@@ -1,6 +1,5 @@
 command line arguments
     height, width
-        default to full screen?
     corna, cornb
         is this be an x,y tuple for a corner?
     size
@@ -12,7 +11,19 @@ command line arguments
 
 allow interactive user input while showing 
 
-fill window as it is resized
+window size
+    allow window to be resized
+        fill in window as it is resized
+        specify initial window size on command line
     just make window full size
 
 color
+    circle of color, like from rebar
+
+find something better than humongous long line to feed img.put().
+    is long string quicker to parse than tuples of numbers?
+
+redundant along 45 degree lines
+    replicate octants
+
+allow pan and zoom and change size parameter

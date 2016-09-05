@@ -9,8 +9,13 @@ arguments may be expressions
         e
         math.*
 
+circle2.py 0 0 .001
+circle2.py 0 0 .003
+circle2.py 0 0 .01
 circle2.py 0 0 .17
 circle2.py 0 0 .34
+circle2.py 0 0 4/9
+circle2.py 0 0 .45
 circle2.py 0 0 .8
 circle2.py 0 0 .81
 circle2.py 0 0 .801
@@ -37,6 +42,24 @@ circle2.py 0 0 1/e
 circle2.py 0 0 'math.sqrt(1/e)'
 circle2.py 0 0 'math.sqrt(1/2)'
 circle2.py 0 0 'math.sqrt(1/pi)'
+circle2.py 0 0 'math.sqrt(1/5)'
+circle2.py 0 0 'math.sqrt(2/5)'
+circle2.py 0 0 'math.sqrt(3/5)'
+circle2.py 0 0 'math.sqrt(4/5)'
+circle2.py 0 0 'math.sqrt(6/5)'
+circle2.py 0 0 'math.sqrt(7/5)'
+circle2.py 0 0 'math.sqrt(1/7)'
+circle2.py 0 0 'math.sqrt(2/7)'
+circle2.py 0 0 'math.sqrt(3/7)'
+circle2.py 0 0 'math.sqrt(4/7)'
+circle2.py 0 0 'math.sqrt(5/7)'
+circle2.py 0 0 'math.sqrt(6/7)'
+circle2.py 0 0 'math.sqrt(8/7)'
+circle2.py 0 0 'math.sqrt(88/7)'
+circle2.py 0 0 'math.sqrt(888/7)'
+circle2.py 0 0 'math.sqrt(8888/7)'
+circle2.py 0 0 'math.sqrt(88888/7)'
+circle2.py 0 0 'math.sqrt(.17)'
 circle2.py width/2 height/2  'e/(min(width, height)/2)'
 '''
 
@@ -51,6 +74,7 @@ GREEN = '#00ff00'
 BLUE = '#0000ff'
 WHITE = '#ffffff'
 
+COLORS = (BLACK, WHITE)
 COLORS = (BLACK, RED, GREEN, BLUE, WHITE)
 
 BACKGROUND_COLOR = BLACK

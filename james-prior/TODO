@@ -19,6 +19,8 @@ window size
 
 color
     circle of color, like from rebar
+        specify how many colors
+            default 2
 
 find something better than humongous long line to feed img.put().
     is long string quicker to parse than tuples of numbers?

@@ -12,7 +12,9 @@ based can be found [here](https://www.dropbox.com/s/4wub318265sw8no/Computer_Rec
 I have implemented one of those algorithms,
 John E. Connett's "CIRCLE^2" in the Python program circle2.py.
 
-The challenge this month is to refactor this program to:
+The challenge this month is to
+[refactor](https://en.wikipedia.org/wiki/Code_refactoring)
+this program to:
 
 1. Can you make the program better at accepting input?
    What should it do if you input bad data?

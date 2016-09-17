@@ -74,7 +74,7 @@ GREEN = '#00ff00'
 BLUE = '#0000ff'
 WHITE = '#ffffff'
 
-COLORS = (BLACK, WHITE)
+COLORS = (WHITE, BLACK)
 COLORS = (BLACK, RED, GREEN, BLUE, WHITE)
 
 BACKGROUND_COLOR = BLACK
@@ -84,13 +84,7 @@ FOREGROUND_COLOR = WHITE
 def color(xx, yy):
     z = xx + yy
     c = int(z)
-    if True:
-        return COLORS[c % len(COLORS)]
-    else:
-        if c % 2 == 0:
-            return FOREGROUND_COLOR
-        else:
-            return BACKGROUND_COLOR
+    return COLORS[c % len(COLORS)]
 
 
 def main(argv):

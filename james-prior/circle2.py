@@ -77,9 +77,6 @@ WHITE = '#ffffff'
 COLORS = (WHITE, BLACK)
 COLORS = (BLACK, RED, GREEN, BLUE, WHITE)
 
-BACKGROUND_COLOR = BLACK
-FOREGROUND_COLOR = WHITE
-
 
 def color(xx, yy):
     z = xx + yy
@@ -93,7 +90,7 @@ def main(argv):
     width, height = screen_size
     corner_x, corner_y, m = map(eval, argv[1:])
     # print(screen_size)
-    canvas = Canvas(window, width=width, height=height, bg=BACKGROUND_COLOR)
+    canvas = Canvas(window, width=width, height=height)
     canvas.pack()
     img = PhotoImage(width=width, height=height)
     canvas.create_image((width/2, height/2), image=img, state="normal")

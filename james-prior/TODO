@@ -24,8 +24,13 @@ color
 
 find something better than humongous long line to feed img.put().
     is long string quicker to parse than tuples of numbers?
+        maybe!
 
 redundant along 45 degree lines
     replicate octants
 
 allow pan and zoom and change size parameter
+
+add dox
+    warn about dangers of eval() allowing injection attacks
+    mention little bobby tables xkcd.com/327

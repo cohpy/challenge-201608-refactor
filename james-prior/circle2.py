@@ -1,66 +1,78 @@
 #!/usr/bin/env python3
 '''
-arguments may be expressions
+circle2.py [m [corner_x [corner_y]]]
 
-    available values:
-        width (unit is 1 pixel)
-        height (unit is 1 pixel)
-        pi
-        e
-        math.*
+    all arguments are optional
+    default values
+        m           1/min(width, height)
+        corner_x    0. (left edge)
+        corner_y    0. (top edge)
 
-circle2.py 0 0 .001
-circle2.py 0 0 .003
-circle2.py 0 0 .01
-circle2.py 0 0 .17
-circle2.py 0 0 .34
-circle2.py 0 0 4/9
-circle2.py 0 0 .45
-circle2.py 0 0 .8
-circle2.py 0 0 .81
-circle2.py 0 0 .801
-circle2.py 0 0 .8001
-circle2.py 0 0 .80001
-circle2.py 0 0 .9
-circle2.py 0 0 .99
-circle2.py 0 0 .999
-circle2.py 0 0 .9999
-circle2.py 0 0 .99999
-circle2.py 0 0 .999999
-circle2.py 0 0 1
-circle2.py 0 0 1.1
-circle2.py 0 0 1.01
-circle2.py 0 0 1.001
-circle2.py 0 0 1.0001
-circle2.py 0 0 1.00001
-circle2.py 0 0 1.000001
-circle2.py 0 0 1.0000001
-circle2.py 0 0 1/3
-circle2.py 0 0 1/width
-circle2.py 0 0 1/pi
-circle2.py 0 0 1/e
-circle2.py 0 0 'math.sqrt(1/e)'
-circle2.py 0 0 'math.sqrt(1/2)'
-circle2.py 0 0 'math.sqrt(1/pi)'
-circle2.py 0 0 'math.sqrt(1/5)'
-circle2.py 0 0 'math.sqrt(2/5)'
-circle2.py 0 0 'math.sqrt(3/5)'
-circle2.py 0 0 'math.sqrt(4/5)'
-circle2.py 0 0 'math.sqrt(6/5)'
-circle2.py 0 0 'math.sqrt(7/5)'
-circle2.py 0 0 'math.sqrt(1/7)'
-circle2.py 0 0 'math.sqrt(2/7)'
-circle2.py 0 0 'math.sqrt(3/7)'
-circle2.py 0 0 'math.sqrt(4/7)'
-circle2.py 0 0 'math.sqrt(5/7)'
-circle2.py 0 0 'math.sqrt(6/7)'
-circle2.py 0 0 'math.sqrt(8/7)'
-circle2.py 0 0 'math.sqrt(88/7)'
-circle2.py 0 0 'math.sqrt(888/7)'
-circle2.py 0 0 'math.sqrt(8888/7)'
-circle2.py 0 0 'math.sqrt(88888/7)'
-circle2.py 0 0 'math.sqrt(.17)'
-circle2.py width/2 height/2  'e/(min(width, height)/2)'
+    arguments may be expressions
+
+        available values:
+            width (unit is 1 pixel)
+            height (unit is 1 pixel)
+            pi
+            e
+            math.*
+
+circle2.py
+circle2.py '1/min(width, height)'
+circle2.py '1/(min(width, height)/2)' width/2 height/2
+circle2.py 1/width
+circle2.py 1/height
+circle2.py .001
+circle2.py .003
+circle2.py .01
+circle2.py .17
+circle2.py .34
+circle2.py 4/9
+circle2.py .45
+circle2.py .8
+circle2.py .81
+circle2.py .801
+circle2.py .8001
+circle2.py .80001
+circle2.py .9
+circle2.py .99
+circle2.py .999
+circle2.py .9999
+circle2.py .99999
+circle2.py .999999
+circle2.py 1
+circle2.py 1.1
+circle2.py 1.01
+circle2.py 1.001
+circle2.py 1.0001
+circle2.py 1.00001
+circle2.py 1.000001
+circle2.py 1.0000001
+circle2.py 1/3
+circle2.py 1/pi
+circle2.py 1/e
+circle2.py 'math.sqrt(1/e)'
+circle2.py 'math.sqrt(1/2)'
+circle2.py 'math.sqrt(1/pi)'
+circle2.py 'math.sqrt(1/5)'
+circle2.py 'math.sqrt(2/5)'
+circle2.py 'math.sqrt(3/5)'
+circle2.py 'math.sqrt(4/5)'
+circle2.py 'math.sqrt(6/5)'
+circle2.py 'math.sqrt(7/5)'
+circle2.py 'math.sqrt(1/7)'
+circle2.py 'math.sqrt(2/7)'
+circle2.py 'math.sqrt(3/7)'
+circle2.py 'math.sqrt(4/7)'
+circle2.py 'math.sqrt(5/7)'
+circle2.py 'math.sqrt(6/7)'
+circle2.py 'math.sqrt(8/7)'
+circle2.py 'math.sqrt(88/7)'
+circle2.py 'math.sqrt(888/7)'
+circle2.py 'math.sqrt(8888/7)'
+circle2.py 'math.sqrt(88888/7)'
+circle2.py 'math.sqrt(.17)'
+circle2.py 'e/(min(width, height)/2)' width/2 height/2
 '''
 
 from sys import argv
@@ -84,12 +96,20 @@ def color(xx, yy):
     return COLORS[c % len(COLORS)]
 
 
+def parse_args(screen_size, m=None, corner_x=0., corner_y=0.):
+    if m is None:
+        m = 1/min(*screen_size)
+    return m, corner_x, corner_y
+
+
 def main(argv):
     window = Tk()
     screen_size = window.winfo_screenwidth(), window.winfo_screenheight()
-    width, height = screen_size
-    corner_x, corner_y, m = map(eval, argv[1:])
     # print(screen_size)
+    width, height = screen_size
+    arg_values = list(map(eval, argv[1:]))
+    # print(repr(arg_values))
+    m, corner_x, corner_y = parse_args(screen_size, *arg_values)
     canvas = Canvas(window, width=width, height=height)
     canvas.pack()
     img = PhotoImage(width=width, height=height)

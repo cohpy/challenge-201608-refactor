@@ -60,6 +60,8 @@ OPTIONS
         For example, 5 yields black, white, red, green, and blue
         and -3 yields just red, green, and blue.
 
+    Shows this help and quits if first argument is -h or --help.
+
 INSTALLATION
     python3 -m venv env3 ;# (on Ubuntu 14.04 LTS)
     source env3/bin/activate
@@ -194,7 +196,7 @@ COPYRIGHT
     MIT
 '''
 
-from sys import argv
+from sys import argv, stderr
 from math import pi, e, sqrt
 import math
 from tkinter import Tk, Canvas, PhotoImage, mainloop
@@ -250,7 +252,20 @@ def parse_args(screen_size, m=None, n_colors=None, corner_x=0., corner_y=0.):
     return m, n_colors, corner_x, corner_y
 
 
+def show_help_if_wanted(argv):
+    try:
+        want_help = argv[1] in ('-h', '--help')
+    except IndexError:
+        want_help = False
+    if want_help:
+        print(__doc__, file=stderr)
+    return want_help
+
+
 def main(argv):
+    if show_help_if_wanted(argv):
+        return
+
     window = Tk()
     screen_size = window.winfo_screenwidth(), window.winfo_screenheight()
     # print(screen_size)

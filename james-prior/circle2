@@ -1,149 +1,190 @@
 #!/usr/bin/env python3
 '''
-name
-circle2 [m [n_colors [corner_x [corner_y]]]]
+NAME
+    circle2 - Makes pretty images in a new full screen window
+              inspired by A.K. Dewdney's "Wallpaper for the Mind".
+    
+SYNOPSIS
+    circle2 [m [n_colors [corner_x [corner_y]]]]
 
-    all arguments are optional
+DESCRIPTION
+    In A.K. Dewdney[1]'s book, "The Armchair Universe"[2], there
+    is a chapter called "Wallpaper for the Mind"[3]. In it, he
+    describes a number of algorithms to make pretty pictures.
+
+    A pdf of of the original Computer Recreations column on which
+    this chapter is based can be found here[4]. I have
+    implemented a heavily modified version of one of those
+    algorithms, John E. Connett's "CIRCLE^2" in the Python
+    program circle2.
+
+    [1] https://en.wikipedia.org/wiki/Alexander_Dewdney
+    [2] http://www.worldcat.org/title/armchair-universe-an-exploration-of-computer-worlds/oclc/16649548
+    [3] https://www.dropbox.com/s/4wub318265sw8no/Computer_Recreations_Column_1986_Wallpaper.pdf
+    [4] https://www.dropbox.com/s/4wub318265sw8no/Computer_Recreations_Column_1986_Wallpaper.pdf?dl=0
+
+OPTIONS
+    All arguments are optional.
+    
+    Arguments are Python expressions.
+
+    One could probably put malicious code in them. This makes
+    this program vulnerable to injection attacks, so beware of
+    accepting input from untrusted sources for the arguments.
+    See "Exploits of a Mom"[5].
+    
+    [5] http://xkcd.com/327/
+
+    Available values:
+        width (unit is 1 pixel)
+        height (unit is 1 pixel)
+        pi
+        e
+        sqrt
+        math.*
+
     default values
         m           1/min(width, height)
         n_colors    2
         corner_x    0. (left edge)
         corner_y    0. (top edge)
 
-    arguments may be expressions
+INSTALLATION
+    python3 -m venv env3 ;# (on Ubuntu 14.04 LTS)
+    source env3/bin/activate
+    pip install -r requirements.txt
 
-        available values:
-            width (unit is 1 pixel)
-            height (unit is 1 pixel)
-            pi
-            e
-            sqrt
-            math.*
+EXAMPLES
+    circle2
+    circle2 1/width
+    circle2 2/width
+    circle2 3/width
+    circle2 3/width 1
+    circle2 3/width 2
+    circle2 3/width 3
+    circle2 3/width 4
+    circle2 3/width 5
+    circle2 3/width -3
+    circle2 3/width 12
+    circle2 10/width
+    circle2 20/width
+    circle2 40/width
+    circle2 80/width
+    circle2 80/width 5
+    circle2 80/width 12
+    circle2 80/width -12
+    circle2 800/width 12
+    circle2 800/width e
+    circle2 800/width -e
+    circle2 800/width pi
+    circle2 800/width -pi
 
-circle2
-circle2 1/width
-circle2 2/width
-circle2 3/width
-circle2 3/width 1
-circle2 3/width 2
-circle2 3/width 3
-circle2 3/width 4
-circle2 3/width 5
-circle2 3/width -3
-circle2 3/width 12
-circle2 10/width
-circle2 20/width
-circle2 40/width
-circle2 80/width
-circle2 80/width 5
-circle2 80/width 12
-circle2 80/width -12
-circle2 800/width 12
-circle2 800/width e
-circle2 800/width -e
-circle2 800/width pi
-circle2 800/width -pi
+    circle2
+    circle2 '1/min(width, height)'
+    circle2 '1/(min(width, height)/2)' None width/2 height/2
+    circle2 1/width
+    circle2 1/height
+    circle2 .001
+    circle2 .003
+    circle2 .01
+    circle2 .17
+    circle2 .34
+    circle2 4/9
+    circle2 .45
+    circle2 .8
+    circle2 .81
+    circle2 .801
+    circle2 .8001
+    circle2 .80001
+    circle2 .9
+    circle2 .99
+    circle2 .999
+    circle2 .9999
+    circle2 .99999
+    circle2 .999999
+    circle2 1
+    circle2 1.1
+    circle2 1.01
+    circle2 1.001
+    circle2 1.0001
+    circle2 1.00001
+    circle2 1.000001
+    circle2 1.0000001
+    circle2 1/3
+    circle2 1/pi
+    circle2 1/e
+    circle2 'sqrt(1/e)'
+    circle2 'sqrt(1/2)'
+    circle2 'sqrt(1/pi)'
+    circle2 'sqrt(1/5)'
+    circle2 'sqrt(2/5)'
+    circle2 'sqrt(3/5)'
+    circle2 'sqrt(4/5)'
+    circle2 'sqrt(6/5)'
+    circle2 'sqrt(7/5)'
+    circle2 'sqrt(1/7)'
+    circle2 'sqrt(1/7)' 1
+    circle2 'sqrt(1/7)' 1.01 ;# compare
+    circle2 'sqrt(1/7)' 1.02 ;# compare
+    circle2 'sqrt(1/7)' 1.1 ;# compare
+    circle2 'sqrt(1/7)' 1.17 ;# compare
+    circle2 'sqrt(1/7)' 'sqrt(2)'
+    circle2 'sqrt(1/7)' 1.9 ;# compare
+    circle2 'sqrt(1/7)' 2 ;# compare
+    circle2 'sqrt(1/7)' e
+    circle2 'sqrt(1/7)' -e
+    circle2 'sqrt(1/7)' 3
+    circle2 'sqrt(1/7)' pi
+    circle2 'sqrt(1/7)' -pi
+    circle2 'sqrt(1/7)' 4
+    circle2 'sqrt(1/7)' 5
+    circle2 'sqrt(1/7)' 7
+    circle2 'sqrt(1/7)' 36
+    circle2 'sqrt(1/7)' -36
+    circle2 'sqrt(1/7)' 360
+    circle2 'sqrt(1/7)' -360
+    circle2 'sqrt(1/7)' 10000
+    circle2 'sqrt(1/7)' -10000
+    circle2 10 -10000
+    circle2 20 -10000
+    circle2 40 -10000
+    circle2 80 -10000
+    circle2 160 -10000
+    circle2 'sqrt(2/7)'
+    circle2 'sqrt(3/7)'
+    circle2 'sqrt(4/7)'
+    circle2 'sqrt(5/7)'
+    circle2 'sqrt(6/7)'
+    circle2 'sqrt(8/7)'
+    circle2 'sqrt(88/7)'
+    circle2 'sqrt(888/7)'
+    circle2 'sqrt(8888/7)'
+    circle2 'sqrt(88888/7)'
+    circle2 'sqrt(.17)' ;# compare
+    circle2 'sqrt(.17)' 1
+    circle2 'sqrt(.17)' 2
+    circle2 'sqrt(.17)' e
+    circle2 'sqrt(.17)' 3
+    circle2 'sqrt(.17)' pi
+    circle2 'sqrt(.17)' 4
+    circle2 'sqrt(.17)' 5 ;# compare
+    circle2 'e/(min(width, height)/2)' None width/2 height/2
+    circle2 'e/(min(width, height)/2)' width/2 height/2 # interesting mistake
 
-circle2
-circle2 '1/min(width, height)'
-circle2 '1/(min(width, height)/2)' None width/2 height/2
-circle2 1/width
-circle2 1/height
-circle2 .001
-circle2 .003
-circle2 .01
-circle2 .17
-circle2 .34
-circle2 4/9
-circle2 .45
-circle2 .8
-circle2 .81
-circle2 .801
-circle2 .8001
-circle2 .80001
-circle2 .9
-circle2 .99
-circle2 .999
-circle2 .9999
-circle2 .99999
-circle2 .999999
-circle2 1
-circle2 1.1
-circle2 1.01
-circle2 1.001
-circle2 1.0001
-circle2 1.00001
-circle2 1.000001
-circle2 1.0000001
-circle2 1/3
-circle2 1/pi
-circle2 1/e
-circle2 'sqrt(1/e)'
-circle2 'sqrt(1/2)'
-circle2 'sqrt(1/pi)'
-circle2 'sqrt(1/5)'
-circle2 'sqrt(2/5)'
-circle2 'sqrt(3/5)'
-circle2 'sqrt(4/5)'
-circle2 'sqrt(6/5)'
-circle2 'sqrt(7/5)'
-circle2 'sqrt(1/7)'
-circle2 'sqrt(1/7)' 1
-circle2 'sqrt(1/7)' 1.1
-circle2 'sqrt(1/7)' 'sqrt(2)'
-circle2 'sqrt(1/7)' 1.9
-circle2 'sqrt(1/7)' 2
-circle2 'sqrt(1/7)' e
-circle2 'sqrt(1/7)' -e
-circle2 'sqrt(1/7)' 3
-circle2 'sqrt(1/7)' pi
-circle2 'sqrt(1/7)' -pi
-circle2 'sqrt(1/7)' 4
-circle2 'sqrt(1/7)' 5
-circle2 'sqrt(1/7)' 7
-circle2 'sqrt(1/7)' 36
-circle2 'sqrt(1/7)' -36
-circle2 'sqrt(1/7)' 360
-circle2 'sqrt(1/7)' -360
-circle2 'sqrt(1/7)' 10000
-circle2 'sqrt(1/7)' -10000
-circle2 10 -10000
-circle2 20 -10000
-circle2 40 -10000
-circle2 80 -10000
-circle2 160 -10000
-circle2 'sqrt(2/7)'
-circle2 'sqrt(3/7)'
-circle2 'sqrt(4/7)'
-circle2 'sqrt(5/7)'
-circle2 'sqrt(6/7)'
-circle2 'sqrt(8/7)'
-circle2 'sqrt(88/7)'
-circle2 'sqrt(888/7)'
-circle2 'sqrt(8888/7)'
-circle2 'sqrt(88888/7)'
-circle2 'sqrt(.17)' # compare
-circle2 'sqrt(.17)' 1
-circle2 'sqrt(.17)' 2
-circle2 'sqrt(.17)' e
-circle2 'sqrt(.17)' 3
-circle2 'sqrt(.17)' pi
-circle2 'sqrt(.17)' 4
-circle2 'sqrt(.17)' 5 # compare
-circle2 'e/(min(width, height)/2)' None width/2 height/2
-circle2 'e/(min(width, height)/2)' width/2 height/2 # interesting mistake
-'''
+BUGS
+    Can not make window truly full screen, at least in Ubuntu 14.04 with XFCE.
 
-'''
-python3 -m venv env3
-source env3/bin/activate
-pip install colour
+AUTHOR
+    James Prior
+
+COPYRIGHT
+    MIT
 '''
 
 from sys import argv
-from tkinter import Tk, Canvas, PhotoImage, mainloop
 from math import pi, e, sqrt
 import math
+from tkinter import Tk, Canvas, PhotoImage, mainloop
 
 from colour import Color
 

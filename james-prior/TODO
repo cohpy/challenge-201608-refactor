@@ -1,9 +1,6 @@
-command line arguments
-    height, width
-    corna, cornb
-        is this be an x,y tuple for a corner?
-    size
+ceiling for n_colors
 
+command line arguments
     multiple patterns
         cycle or once
         specify time delay
@@ -17,11 +14,6 @@ window size
         specify initial window size on command line
     just make window full size
 
-color
-    circle of color, like from rebar
-        specify how many colors
-            default 2
-
 find something better than humongous long line to feed img.put().
     is long string quicker to parse than tuples of numbers?
         maybe!
@@ -34,3 +26,5 @@ allow pan and zoom and change size parameter
 add dox
     warn about dangers of eval() allowing injection attacks
     mention little bobby tables xkcd.com/327
+
+consider using None for more default values

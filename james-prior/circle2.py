@@ -69,6 +69,10 @@ circle2.py 'math.sqrt(1/7)' 3
 circle2.py 'math.sqrt(1/7)' pi
 circle2.py 'math.sqrt(1/7)' 4
 circle2.py 'math.sqrt(1/7)' 5
+circle2.py 'math.sqrt(1/7)' 36
+circle2.py 'math.sqrt(1/7)' -36
+circle2.py 'math.sqrt(1/7)' 360
+circle2.py 'math.sqrt(1/7)' 10000
 circle2.py 'math.sqrt(2/7)'
 circle2.py 'math.sqrt(3/7)'
 circle2.py 'math.sqrt(4/7)'
@@ -90,31 +94,55 @@ circle2.py 'math.sqrt(.17)' 5
 circle2.py 'e/(min(width, height)/2)' width/2 height/2
 '''
 
+'''
+python3 -m venv env3
+source env3/bin/activate
+pip install colour
+'''
+
 from sys import argv
 from tkinter import Tk, Canvas, PhotoImage, mainloop
 from math import pi, e
 import math
 
-BLACK = '#000000'
-RED = '#ff0000'
-GREEN = '#00ff00'
-BLUE = '#0000ff'
-WHITE = '#ffffff'
-
-COLORS = (WHITE, BLACK)
-COLORS = (BLACK, WHITE, RED, GREEN, BLUE)
+from colour import Color
 
 
-def color(xx, yy, n_colors):
-    z = xx + yy
-    c = int(z)
-    return COLORS[int(c % n_colors)]
+def hex_24bit_color(color):
+    color_256_rgb = tuple(int(0x100 * primary) for primary in color.rgb)
+    color_255_rgb = tuple(min(0x100-1, primary) for primary in color_256_rgb)
+    return '#%02x%02x%02x' % color_255_rgb
 
 
-def parse_args(screen_size, m=None, n_colors=len(COLORS), corner_x=0., corner_y=0.):
+def make_color_func(n_colors):
+    red = 0/3
+    green = 1/3
+    blue = 2/3
+    colors = []
+    if n_colors > 0:
+        colors = [Color('black'), Color('white')][:n_colors]
+    else:
+        n_colors = -n_colors
+    if n_colors > len(colors):
+        n_colors -= len(colors)
+        colors.extend(
+            Color(hue=((red-i/n_colors)%1), saturation=1, luminance=0.5)
+            for i in range(n_colors)
+        )
+    hex_colors = [hex_24bit_color(color) for color in colors]
+    # print(repr(colors), repr(hex_colors))
+
+    def get_color(xx, yy):
+        z = xx + yy
+        c = int(z)
+        return hex_colors[int(c % len(hex_colors))]
+
+    return get_color
+
+
+def parse_args(screen_size, m=None, n_colors=2, corner_x=0., corner_y=0.):
     if m is None:
         m = 1/min(*screen_size)
-    n_colors = min(n_colors, len(COLORS))
     return m, n_colors, corner_x, corner_y
 
 
@@ -126,6 +154,7 @@ def main(argv):
     arg_values = list(map(eval, argv[1:]))
     # print(repr(arg_values))
     m, n_colors, corner_x, corner_y = parse_args(screen_size, *arg_values)
+    get_color = make_color_func(n_colors)
     canvas = Canvas(window, width=width, height=height)
     canvas.pack()
     img = PhotoImage(width=width, height=height)
@@ -137,7 +166,7 @@ def main(argv):
     lines = []
     for yy in y_squareds:
         horizontal_line = '{' + ' '.join(
-            color(xx, yy, n_colors)
+            get_color(xx, yy)
             for xx in x_squareds) + '}'
         lines.append(horizontal_line)
     img.put(' '.join(lines))

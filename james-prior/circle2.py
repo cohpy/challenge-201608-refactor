@@ -5,7 +5,7 @@ circle2.py [m [n_colors [corner_x [corner_y]]]]
     all arguments are optional
     default values
         m           1/min(width, height)
-        n_colors    len(COLORS) (5)
+        n_colors    2
         corner_x    0. (left edge)
         corner_y    0. (top edge)
 

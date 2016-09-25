@@ -1,0 +1,40 @@
+first look at pretty pictures
+
+code
+
+    arguments are Python expressions
+
+        flexible!
+        powerful!
+        convenient!
+
+        DANGEROUS!: Vulnerable to injection attacks.
+
+            Exploits of a Mom
+            xkcd.com/327/
+
+    arg_values = list(map(eval, argv[1:]))
+
+        Evaluates all argument Python expressions of in one fell swoop.
+        Handles variable number of arguments.
+
+    m, n_colors, corner_x, corner_y = parse_args(screen_size, *arg_values)
+    def parse_args(screen_size, m=None, n_colors=None, corner_x=0., corner_y=0.):
+
+        Handles variable number of arguments easily.
+            This is done with the default values in the functions
+            and calling with *arg_values.
+        Explicitly passing None for m and n_colors
+        allows one to get the real default value.
+
+    m = 1/min(screen_size)
+
+        screen_size is a tuple.
+        so min(screen_size) returns width or height, whichever is smaller.
+
+    make_color_function
+
+        Creates a function, get_color() and returns it.
+        A closure is used
+        so that get_color() remembers hex_colors and n_colors.
+

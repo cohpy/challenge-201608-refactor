@@ -236,7 +236,7 @@ def make_color_function(n_colors):
 
 def parse_args(screen_size, m=None, n_colors=None, corner_x=0., corner_y=0.):
     if m is None:
-        m = 1/min(*screen_size)
+        m = 1/min(screen_size)
     if n_colors is None:
         n_colors = 2
     return m, n_colors, corner_x, corner_y

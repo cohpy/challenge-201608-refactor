@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 '''
-circle2.py [m [corner_x [corner_y]]]
+circle2.py [m [n_colors [corner_x [corner_y]]]]
 
     all arguments are optional
     default values
         m           1/min(width, height)
+        n_colors    len(COLORS) (5)
         corner_x    0. (left edge)
         corner_y    0. (top edge)
 
@@ -61,6 +62,13 @@ circle2.py 'math.sqrt(4/5)'
 circle2.py 'math.sqrt(6/5)'
 circle2.py 'math.sqrt(7/5)'
 circle2.py 'math.sqrt(1/7)'
+circle2.py 'math.sqrt(1/7)' 1
+circle2.py 'math.sqrt(1/7)' 2
+circle2.py 'math.sqrt(1/7)' e
+circle2.py 'math.sqrt(1/7)' 3
+circle2.py 'math.sqrt(1/7)' pi
+circle2.py 'math.sqrt(1/7)' 4
+circle2.py 'math.sqrt(1/7)' 5
 circle2.py 'math.sqrt(2/7)'
 circle2.py 'math.sqrt(3/7)'
 circle2.py 'math.sqrt(4/7)'
@@ -72,6 +80,13 @@ circle2.py 'math.sqrt(888/7)'
 circle2.py 'math.sqrt(8888/7)'
 circle2.py 'math.sqrt(88888/7)'
 circle2.py 'math.sqrt(.17)'
+circle2.py 'math.sqrt(.17)' 1
+circle2.py 'math.sqrt(.17)' 2
+circle2.py 'math.sqrt(.17)' e
+circle2.py 'math.sqrt(.17)' 3
+circle2.py 'math.sqrt(.17)' pi
+circle2.py 'math.sqrt(.17)' 4
+circle2.py 'math.sqrt(.17)' 5
 circle2.py 'e/(min(width, height)/2)' width/2 height/2
 '''
 
@@ -87,19 +102,20 @@ BLUE = '#0000ff'
 WHITE = '#ffffff'
 
 COLORS = (WHITE, BLACK)
-COLORS = (BLACK, RED, GREEN, BLUE, WHITE)
+COLORS = (BLACK, WHITE, RED, GREEN, BLUE)
 
 
-def color(xx, yy):
+def color(xx, yy, n_colors):
     z = xx + yy
     c = int(z)
-    return COLORS[c % len(COLORS)]
+    return COLORS[int(c % n_colors)]
 
 
-def parse_args(screen_size, m=None, corner_x=0., corner_y=0.):
+def parse_args(screen_size, m=None, n_colors=len(COLORS), corner_x=0., corner_y=0.):
     if m is None:
         m = 1/min(*screen_size)
-    return m, corner_x, corner_y
+    n_colors = min(n_colors, len(COLORS))
+    return m, n_colors, corner_x, corner_y
 
 
 def main(argv):
@@ -109,7 +125,7 @@ def main(argv):
     width, height = screen_size
     arg_values = list(map(eval, argv[1:]))
     # print(repr(arg_values))
-    m, corner_x, corner_y = parse_args(screen_size, *arg_values)
+    m, n_colors, corner_x, corner_y = parse_args(screen_size, *arg_values)
     canvas = Canvas(window, width=width, height=height)
     canvas.pack()
     img = PhotoImage(width=width, height=height)
@@ -121,7 +137,7 @@ def main(argv):
     lines = []
     for yy in y_squareds:
         horizontal_line = '{' + ' '.join(
-            color(xx, yy)
+            color(xx, yy, n_colors)
             for xx in x_squareds) + '}'
         lines.append(horizontal_line)
     img.put(' '.join(lines))

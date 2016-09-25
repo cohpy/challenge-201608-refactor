@@ -1,5 +1,3 @@
-ceiling for n_colors
-
 command line arguments
     multiple patterns
         cycle or once
@@ -8,11 +6,15 @@ command line arguments
 
 allow interactive user input while showing 
 
-window size
+    allow pan and zoom and change size parameter
+
     allow window to be resized
         fill in window as it is resized
         specify initial window size on command line
+
+window size
     just make window full size
+    make truly full screen
 
 find something better than humongous long line to feed img.put().
     is long string quicker to parse than tuples of numbers?
@@ -20,11 +22,3 @@ find something better than humongous long line to feed img.put().
 
 redundant along 45 degree lines
     replicate octants
-
-allow pan and zoom and change size parameter
-
-add dox
-    warn about dangers of eval() allowing injection attacks
-    mention little bobby tables xkcd.com/327
-
-consider using None for more default values

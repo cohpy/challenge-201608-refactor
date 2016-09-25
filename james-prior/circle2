@@ -137,7 +137,9 @@ EXAMPLES
     circle2 'sqrt(1/7)' 1
     circle2 'sqrt(1/7)' 1.01 ;# compare
     circle2 'sqrt(1/7)' 1.02 ;# compare
+    circle2 'sqrt(1/7)' 1.099 ;# compare
     circle2 'sqrt(1/7)' 1.1 ;# compare
+    circle2 'sqrt(1/7)' 1.101 ;# compare
     circle2 'sqrt(1/7)' 1.17 ;# compare
     circle2 'sqrt(1/7)' 'sqrt(2)'
     circle2 'sqrt(1/7)' 1.9 ;# compare
@@ -207,6 +209,12 @@ def hex_24bit_color(color):
 
 
 def make_color_function(n_colors):
+    '''Given n_colors number of colors,
+    returns a function that accepts two arguments, xx and yy
+    and returns a color as a string
+    in '#%02x%02x%02x' % (red, green, blue) form
+    that tkinter likes.
+    '''
     red = 0/3
     green = 1/3
     blue = 2/3

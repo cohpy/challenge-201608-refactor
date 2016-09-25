@@ -177,8 +177,7 @@ def make_color_function(n_colors):
 
     def get_color(xx, yy):
         z = xx + yy
-        c = int(z)
-        return hex_colors[int(c % n_colors)]
+        return hex_colors[int(z % n_colors)]
 
     return get_color
 

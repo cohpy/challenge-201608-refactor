@@ -3,7 +3,7 @@
 NAME
     circle2 - Makes pretty images in a new full screen window
               inspired by A.K. Dewdney's "Wallpaper for the Mind".
-    
+
 SYNOPSIS
     circle2 [m [n_colors [corner_x [corner_y]]]]
 
@@ -25,14 +25,14 @@ DESCRIPTION
 
 OPTIONS
     All arguments are optional.
-    
+
     Arguments are Python expressions.
 
     One could probably put malicious code in them. This makes
     this program vulnerable to injection attacks, so beware of
     accepting input from untrusted sources for the arguments.
     See "Exploits of a Mom"[5].
-    
+
     [5] http://xkcd.com/327/
 
     Available values:
@@ -48,6 +48,17 @@ OPTIONS
         n_colors    2
         corner_x    0. (left edge)
         corner_y    0. (top edge)
+
+    n_colors specifies the number of colors to use.
+
+        When n_colors is positive, the first two colors are black
+        and white. The remaining colors are spaced evenly on a
+        color wheel, starting at red. If n_colors is negative,
+        its absolute value is used and the black and white values
+        are not used.
+
+        For example, 5 yields black, white, red, green, and blue
+        and -3 yields just red, green, and blue.
 
 INSTALLATION
     python3 -m venv env3 ;# (on Ubuntu 14.04 LTS)

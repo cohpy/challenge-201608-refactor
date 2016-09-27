@@ -287,7 +287,7 @@ def main(argv):
     # print(screen_size)
     arg_values = list(map(eval, argv[1:]))
     # print(repr(arg_values))
-    for i in range(100,500):
+    for i in range(1,500):
         m, n_colors, corner_x, corner_y = parse_args(screen_size, float(i)/1920)
         #m, n_colors, corner_x, corner_y = parse_args(screen_size, float(i)/1920, -8) 
         #m, n_colors, corner_x, corner_y = parse_args(screen_size, sqrt(i/100.0))
